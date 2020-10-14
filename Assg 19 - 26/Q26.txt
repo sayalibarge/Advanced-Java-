@@ -1,0 +1,46 @@
+
+//26. Create a Servlet that prints number of visits by a particular user. 
+package p1;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/Que26")
+public class Que26 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+      static int  count=0;
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		if(count == 0)
+		{
+			out.print("<body bgcolor=skyblue>");
+			out.print("<center>");
+			out.print("welcome to the first time");
+			count++;
+		}
+		else
+		{
+			out.print("<center>");
+			out.print("<body bgcolor=pink>");
+			out.print("<h1>You have visited " +count +  " times ");
+			count++;
+			out.print("</h1>");
+			out.print("</center>");
+			out.print("</body>");
+		}
+		
+	}
+
+}
+///////////////////////////////////////////////////////////

@@ -1,0 +1,98 @@
+/*
+ * 24.  Create an html page Calci.html that has a GUI to take two numbers, 
+ * to make choice from addition, subtraction, multiplication or division and 
+ * a submit button. After submitting the form, request should be generated for 
+ * ArithmeticServlet. This servlet should get two numbers entered by the user and his choice.
+ *  Perform the requested operation and display the result in the same servlet.
+ */
+
+///////////////////////////////////////////////////////////
+package p1;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/Que24")
+public class Que24 extends HttpServlet {
+		protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+				throws ServletException, IOException {
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
+			int x = Integer.parseInt(request.getParameter("fno"));
+			int y = Integer.parseInt(request.getParameter("lno"));
+			/*Write logic Here */
+
+			if((request.getParameter("r1"))!=null) {
+				out.print("Addition - "+(x+y));	
+			}
+			if((request.getParameter("r2"))!=null) {
+				out.print("Substraction - "+(x-y));
+			}
+			if((request.getParameter("r3"))!=null) {
+				out.print("Multiplication - "+(x*y));
+			}
+			if((request.getParameter("r4"))!=null) {
+				out.print("Divide - "+(x/y));
+			}			
+			
+			out.flush();
+			out.close();
+	}
+
+}
+/////////////////////////////////////////////////////////////////////
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Calculator</title>
+</head>
+<body>
+
+		
+		<form action="Que24" method="get" style="border: 1px black solid">
+		 <table align="center">
+		 	<tr align="center">
+		 		<td></td>
+		 		<td><b>Calculator</b></td>
+		 		
+		 	</tr>
+		 	<tr>
+			 	<td>First Number : </td>
+			 	<td><input type="text" name="fno" placeholder="Enter 1st no"></td>
+		 	</tr>
+		 	<tr>
+		 	<td>Second Number : </td>
+		 	<td><input type="text" name="lno" placeholder="Enter 2nd no"></td>
+		 	</tr>
+		 	<tr>
+		 	<td>Operation : </td>
+		 	<td>
+		 	
+		 	<input type="radio" name="r1" value="Add" />Add
+		 	<input type="radio" name="r2" value="Substract" />Substract
+		 	<input type="radio" name="r3" value="Multiply" />Multiply
+		 	<input type="radio" name="r4" value="Divide" />Divide
+		 	</td>
+		 	</tr>
+		 	<tr>
+		 	<td></td>  
+		 	<td>
+		 	<input type="submit" name="Result" value="Result">
+		 	</td>
+		 	
+		 	</tr>
+		 </table>
+		</form>
+	
+</body>
+</html>

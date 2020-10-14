@@ -1,0 +1,68 @@
+/*
+ * 22. Create an html page having two buttons first labeled with GET REQUEST DEMO and 
+ * second with POST REQUEST DEMO. Create a Servlet    that overrides both doGet and
+ *  doPost methods. After clicking first button doGet method should be called that prints 
+ *  YOU SELECTED GET TYPE REQUEST.
+ *  After clicking second button doPost method 
+ *  should be called that prints YOU SELECTED POST TYPE REQUEST.  
+ */
+
+package p1;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/Que22")
+public class Que22 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
+	ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.print("<h3>YOU SELECTED GET TYPE REQUEST</h3>");
+		out.flush();
+		out.close();
+
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.print("<h3>YOU SELECTED POST TYPE REQUEST</h3>");
+		out.flush();
+		out.close();
+		
+	}
+
+}
+
+////////////////////////////////////////////////////////////////
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Que 22</title>
+</head>
+<body>
+<form action="Que22" method="get">
+		<input type="submit" value="GET REQUEST DEMO ">
+		
+		</input>
+	</form>
+	<br><br>
+	<form action="Que22" method="post">
+		<input type="submit" value="POST REQUEST DEMO">
+		
+		</input>
+	</form>
+</body>
+</html>
